@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nova - Website UI Redesign</title>
+
+<style>
+
+/* ================= GENERAL ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #172033;
+    background: white;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+section {
+    padding: 90px 0;
+}
+
+.small-title {
+    color: #6c63ff;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-container {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #6c63ff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #555;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #6c63ff;
+}
+
+.nav-button,
+.primary-btn {
+    background: #6c63ff;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-button:hover,
+.primary-btn:hover {
+    transform: translateY(-3px);
+}
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    background: #f7f7ff;
+    padding: 100px 0;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: #6c63ff;
+}
+
+.hero-text {
+    color: #666;
+    font-size: 18px;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.secondary-btn {
+    padding: 12px 22px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+}
+
+
+/* Hero Card */
+
+.hero-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+}
+
+.dashboard-circle {
+    width: 160px;
+    height: 160px;
+    margin: 30px auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eeeeff;
+    border: 15px solid #6c63ff;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.hero-card h3,
+.hero-card p {
+    text-align: center;
+}
+
+.hero-card p {
+    color: #777;
+}
+
+.progress {
+    height: 8px;
+    background: #eee;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.progress div {
+    width: 82%;
+    height: 100%;
+    background: #6c63ff;
+    border-radius: 10px;
+}
+
+
+/* ================= SECTION HEADING ================= */
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 50px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.section-heading p:last-child {
+    color: #777;
+}
+
+
+/* ================= FEATURES ================= */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature-card {
+    padding: 35px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    background: #eeeeff;
+    color: #6c63ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #777;
+}
+
+
+/* ================= ABOUT ================= */
+
+.about {
+    background: #f7f7ff;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.image-box {
+    height: 400px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #6c63ff, #aaa4ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.about-content h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.about-content > p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.check-list {
+    margin-bottom: 30px;
+}
+
+.check-list p {
+    margin: 10px 0;
+}
+
+
+/* ================= STATS ================= */
+
+.stats {
+    background: #172033;
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+
+.stats h2 {
+    font-size: 40px;
+}
+
+.stats p {
+    color: #bbb;
+}
+
+
+/* ================= REVIEWS ================= */
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.review-card {
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+}
+
+.stars {
+    color: #f5a623;
+    margin-bottom: 15px;
+}
+
+.review-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.review-card span {
+    color: #999;
+    font-size: 14px;
+}
+
+
+/* ================= CONTACT ================= */
+
+.contact {
+    background: #f7f7ff;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.contact-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.contact-content p {
+    color: #777;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #6c63ff;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #111827;
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container p {
+    color: #999;
+}
+
+.social {
+    display: flex;
+    gap: 20px;
+    color: #bbb;
+}
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width: 768px) {
+
+    .nav-container {
+        height: 65px;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 25px;
+        gap: 20px;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding: 70px 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+
+
+    /* Features */
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* About */
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .image-box {
+        height: 300px;
+    }
+
+    .about-content h2 {
+        font-size: 32px;
+    }
+
+
+    /* Stats */
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+
+    /* Reviews */
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Contact */
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+
+    /* Footer */
+
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .social {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <div class="logo">
+            Nova<span>.</span>
+        </div>
+
+        <nav id="navMenu">
+
+            <a href="#home">Home</a>
+
+            <a href="#features">Features</a>
+
+            <a href="#about">About</a>
+
+            <a href="#reviews">Reviews</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <a href="#contact" class="nav-button">
+            Get Started
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-container">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                MODERN DIGITAL EXPERIENCE
+            </p>
+
+            <h1>
+                Simple design.
+                <span>Better experience.</span>
+            </h1>
+
+            <p class="hero-text">
+                We create clean, modern and responsive digital
+                experiences that make websites easier and more
+                enjoyable to use.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#features" class="primary-btn">
+                    Explore Features
+                </a>
+
+                <a href="#about" class="secondary-btn">
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="card-top">
+
+                <span>Dashboard</span>
+
+                <span>•••</span>
+
+            </div>
+
+
+            <div class="dashboard-circle">
+                82%
+            </div>
+
+
+            <h3>
+                User Experience
+            </h3>
+
+            <p>
+                Improved usability and responsive design.
+            </p>
+
+
+            <div class="progress">
+
+                <div></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section id="features">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <p class="small-title">
+                OUR FEATURES
+            </p>
+
+            <h2>
+                Designed around users
+            </h2>
+
+            <p>
+                Every part of the interface is designed to
+                improve usability and visual clarity.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Clean Interface
+                </h3>
+
+                <p>
+                    A simple layout with clear navigation
+                    and better visual hierarchy.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    ◈
+                </div>
+
+                <h3>
+                    Responsive Design
+                </h3>
+
+                <p>
+                    The website automatically adapts to
+                    desktop, tablet and mobile screens.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Better Usability
+                </h3>
+
+                <p>
+                    User-friendly interactions help visitors
+                    complete tasks easily.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="container about-container">
+
+        <div class="about-image">
+
+            <div class="image-box">
+                UI
+            </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p class="small-title">
+                ABOUT THE REDESIGN
+            </p>
+
+            <h2>
+                Turning complex interfaces into
+                simple experiences.
+            </h2>
+
+            <p>
+                This redesigned interface focuses on usability,
+                accessibility and modern visual design.
+            </p>
+
+
+            <div class="check-list">
+
+                <p>✓ Clear visual hierarchy</p>
+
+                <p>✓ Easy navigation</p>
+
+                <p>✓ Responsive layout</p>
+
+                <p>✓ Consistent design system</p>
+
+            </div>
+
+
+            <a href="#contact" class="primary-btn">
+                Start a Project
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+        <div>
+
+            <h2>
+                95%
+            </h2>
+
+            <p>
+                User Satisfaction
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h2>
+                40%
+            </h2>
+
+            <p>
+                Faster Navigation
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h2>
+                3x
+            </h2>
+
+            <p>
+                Better Engagement
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h2>
+                100%
+            </h2>
+
+            <p>
+                Responsive
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REVIEWS ================= -->
+
+<section id="reviews">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <p class="small-title">
+                USER REVIEWS
+            </p>
+
+            <h2>
+                What users say
+            </h2>
+
+        </div>
+
+
+        <div class="review-grid">
+
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "The new interface is much easier to
+                    understand and navigate."
+                </p>
+
+                <h4>
+                    Priya
+                </h4>
+
+                <span>
+                    UI Designer
+                </span>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "The responsive design works perfectly
+                    on my mobile device."
+                </p>
+
+                <h4>
+                    Arun
+                </h4>
+
+                <span>
+                    Developer
+                </span>
+
+            </div>
+
+
+            <div class="review-card">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "The clean layout makes finding
+                    information much faster."
+                </p>
+
+                <h4>
+                    Meena
+                </h4>
+
+                <span>
+                    Student
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container contact-container">
+
+        <div class="contact-content">
+
+            <p class="small-title">
+                GET IN TOUCH
+            </p>
+
+            <h2>
+                Have a project in mind?
+            </h2>
+
+            <p>
+                Tell us about your project and let's create
+                a better digital experience.
+            </p>
+
+        </div>
+
+
+        <form class="contact-form" onsubmit="submitForm(event)">
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                placeholder="Your Message"
+                rows="5"
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="primary-btn">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-container">
+
+        <div class="logo">
+            Nova<span>.</span>
+        </div>
+
+        <p>
+            © 2026 Nova. All Rights Reserved.
+        </p>
+
+        <div class="social">
+
+            <span>Facebook</span>
+
+            <span>Instagram</span>
+
+            <span>LinkedIn</span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function toggleMenu() {
+
+    const nav =
+        document.getElementById("navMenu");
+
+    nav.classList.toggle("active");
+
+}
+
+
+function submitForm(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Thank you! Your message has been submitted."
+    );
+
+    event.target.reset();
+
+}
+
+
+const navLinks =
+    document.querySelectorAll("#navMenu a");
+
+
+navLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        document
+            .getElementById("navMenu")
+            .classList.remove("active");
+
+    });
+
+});
+
+</script>
+
+
+</body>
+</html>
