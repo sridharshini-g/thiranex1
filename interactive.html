@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Prototype</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f2f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .app {
+            width: 360px;
+            min-height: 650px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2563eb;
+            color: white;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .screen {
+            display: none;
+            padding: 25px;
+            min-height: 500px;
+            animation: fade 0.4s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+        }
+
+        .card {
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 12px;
+            background: #eef4ff;
+            cursor: pointer;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .success {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .success h2 {
+            color: green;
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+
+        .bottom-nav button {
+            border: none;
+            background: none;
+            color: #2563eb;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        <h1>My Prototype</h1>
+        <p style="color:white;margin:5px;">Interactive App Demo</p>
+    </div>
+
+    <!-- HOME -->
+    <div id="home" class="screen active">
+
+        <h2>Welcome 👋</h2>
+
+        <p>
+            This is an interactive prototype created
+            using HTML, CSS and JavaScript.
+        </p>
+
+        <button class="btn" onclick="showScreen('features')">
+            Explore Features
+        </button>
+
+        <button class="btn" onclick="showScreen('feedback')">
+            Give Feedback
+        </button>
+
+    </div>
+
+
+    <!-- FEATURES -->
+    <div id="features" class="screen">
+
+        <h2>Features</h2>
+
+        <div class="card" onclick="showScreen('details')">
+            <h3>🎨 Interactive Design</h3>
+            <p>Click to view details.</p>
+        </div>
+
+        <div class="card">
+            <h3>✨ Animations</h3>
+            <p>Smooth screen transitions.</p>
+        </div>
+
+        <div class="card">
+            <h3>🧪 User Testing</h3>
+            <p>Test the prototype with users.</p>
+        </div>
+
+        <button class="btn" onclick="showScreen('home')">
+            Back to Home
+        </button>
+
+    </div>
+
+
+    <!-- DETAILS -->
+    <div id="details" class="screen">
+
+        <h2>Interactive Design</h2>
+
+        <p>
+            Interactive design allows users to click buttons,
+            navigate between screens and experience the
+            application flow before the final application
+            is developed.
+        </p>
+
+        <button class="btn" onclick="showScreen('feedback')">
+            Test Prototype
+        </button>
+
+        <button class="btn" onclick="showScreen('features')">
+            Back
+        </button>
+
+    </div>
+
+
+    <!-- FEEDBACK -->
+    <div id="feedback" class="screen">
+
+        <h2>User Feedback</h2>
+
+        <p>Tell us what you think about this prototype.</p>
+
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <textarea id="message"
+            placeholder="Enter your feedback"></textarea>
+
+        <button class="btn" onclick="submitFeedback()">
+            Submit Feedback
+        </button>
+
+        <button class="btn" onclick="showScreen('home')">
+            Cancel
+        </button>
+
+    </div>
+
+
+    <!-- SUCCESS -->
+    <div id="success" class="screen">
+
+        <div class="success">
+
+            <h2>✅ Thank You!</h2>
+
+            <p>
+                Your feedback has been successfully submitted.
+            </p>
+
+            <button class="btn" onclick="showScreen('home')">
+                Go to Home
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <div class="bottom-nav">
+
+        <button onclick="showScreen('home')">
+            🏠 Home
+        </button>
+
+        <button onclick="showScreen('features')">
+            ⭐ Features
+        </button>
+
+        <button onclick="showScreen('feedback')">
+            💬 Feedback
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    function showScreen(screenId) {
+
+        // Hide all screens
+        let screens = document.querySelectorAll(".screen");
+
+        screens.forEach(function(screen) {
+            screen.classList.remove("active");
+        });
+
+        // Show selected screen
+        document.getElementById(screenId)
+                .classList.add("active");
+    }
+
+
+    function submitFeedback() {
+
+        let name = document.getElementById("name").value;
+        let message = document.getElementById("message").value;
+
+        if (name === "" || message === "") {
+
+            alert("Please enter your name and feedback.");
+
+        } else {
+
+            showScreen("success");
+
+            document.getElementById("name").value = "";
+            document.getElementById("message").value = "";
+        }
+    }
+
+</script>
+
+</body>
+</html>
